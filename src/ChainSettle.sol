@@ -3,6 +3,7 @@ pragma solidity ^0.8.13;
 
 /// ============ Imports ============
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {AggregatorV3Interface} from "chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol"; // Chainlink pricefeed
 
 /// @title ChainSettle
 /// @author Uttam Singh
@@ -36,4 +37,13 @@ contract ChainSettle {
     uint256 public constant WBTC_AMOUNT = 1e8;
     /// @notice winning BTC/USD price
     uint256 public constant WINNING_BTC_PRICE = 1_000_000;
+
+    /// ============ Immutable storage ============
+
+    /// @notice USDC token
+    IERC20 public immutable USDC_TOKEN;
+    /// @notice WBTC token
+    IERC20 public immutable WBTC_TOKEN;
+    /// @notice BTC/USD price feed (Chainlink)
+    AggregatorV3Interface public immutable BTCUSD_PRICEFEED;
 }
