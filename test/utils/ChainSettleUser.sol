@@ -1,0 +1,64 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+pragma solidity ^0.8.13;
+
+/// ============ Imports ============
+
+import "../../src/ChainSettle.sol"; // ChainSettle
+import "@openzeppelin/contracts/mocks/token/ERC20Mock.sol"; // Mock ERC20 token
+
+
+contract ChainSettleUser {
+    /// ============ Immutable storage ============
+
+    /// @notice USDC token
+    ERC20Mock internal immutable USDC_TOKEN;
+    /// @notice WBTC token
+    ERC20Mock internal immutable WBTC_TOKEN;
+    /// @notice Bet contract
+    ChainSettle internal immutable BET_CONTRACT;
+
+    /// ============ Constructor ============
+
+    /// @notice Creates a new ChainSettleUser
+    /// @param _USDC_TOKEN USDC token
+    /// @param _WBTC_TOKEN wBTC token
+    /// @param _BET_CONTRACT ChainSettle contract
+    constructor(ERC20Mock _USDC_TOKEN, ERC20Mock _WBTC_TOKEN, ChainSettle _BET_CONTRACT) {
+        USDC_TOKEN = _USDC_TOKEN;
+        WBTC_TOKEN = _WBTC_TOKEN;
+        BET_CONTRACT = _BET_CONTRACT;
+
+        // Approve bet contract to spend funds
+        USDC_TOKEN.approve(address(BET_CONTRACT), 2 ** 256 - 1);
+        WBTC_TOKEN.approve(address(BET_CONTRACT), 2 ** 256 - 1);
+    }
+
+    /// ============ Helper functions ============
+
+    /// @notice Check USDC balance
+    function USDCBalance() public view returns (uint256) {
+        return USDC_TOKEN.balanceOf(address(this));
+    }
+
+    /// @notice Check WBTC balance
+    function WBTCBalance() public view returns (uint256) {
+        return WBTC_TOKEN.balanceOf(address(this));
+    }
+
+    /// ============ Inherited Functionality ============
+
+    /// @notice Add USDC to bet
+    function addUSDC(uint256 betId) public {
+        BET_CONTRACT.addUSDC(betId);
+    }
+
+    /// @notice Add wBTC to bet
+    function addWBTC(uint256 betId) public {
+        BET_CONTRACT.addWBTC(betId);
+    }
+
+    /// @notice Withdraw stale funds
+    function withdrawStale(uint256 betId) public {
+        BET_CONTRACT.withdrawStale(betId);
+    }
+}
