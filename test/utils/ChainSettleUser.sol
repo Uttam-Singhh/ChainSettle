@@ -4,16 +4,16 @@ pragma solidity ^0.8.13;
 /// ============ Imports ============
 
 import "../../src/ChainSettle.sol"; // ChainSettle
-import "@openzeppelin/contracts/mocks/token/ERC20Mock.sol"; // Mock ERC20 token
+import "solmate/test/utils/mocks/MockERC20.sol"; // Mock ERC20 token
 
 
 contract ChainSettleUser {
     /// ============ Immutable storage ============
 
     /// @notice USDC token
-    ERC20Mock internal immutable USDC_TOKEN;
+    MockERC20 internal immutable USDC_TOKEN;
     /// @notice WBTC token
-    ERC20Mock internal immutable WBTC_TOKEN;
+    MockERC20 internal immutable WBTC_TOKEN;
     /// @notice Bet contract
     ChainSettle internal immutable BET_CONTRACT;
 
@@ -23,7 +23,7 @@ contract ChainSettleUser {
     /// @param _USDC_TOKEN USDC token
     /// @param _WBTC_TOKEN wBTC token
     /// @param _BET_CONTRACT ChainSettle contract
-    constructor(ERC20Mock _USDC_TOKEN, ERC20Mock _WBTC_TOKEN, ChainSettle _BET_CONTRACT) {
+    constructor(MockERC20 _USDC_TOKEN, MockERC20 _WBTC_TOKEN, ChainSettle _BET_CONTRACT) {
         USDC_TOKEN = _USDC_TOKEN;
         WBTC_TOKEN = _WBTC_TOKEN;
         BET_CONTRACT = _BET_CONTRACT;

@@ -11,7 +11,7 @@ import {AggregatorV3Interface} from "../lib/chainlink-brownie-contracts/contract
 contract ChainSettle {
     /// ============ Structs ============
 
-    /// @notice Individual bet
+  /// @notice Individual bet
     struct Bet {
         /// @notice Has bet already been settled
         bool settled;
@@ -19,13 +19,14 @@ contract ChainSettle {
         bool USDCSent;
         /// @notice Has partyWBTC sent funds
         bool WBTCSent;
-        /// @notice Bet starting timestamp
-        uint256 startTimestamp;
         /// @notice Party providing USDC
         address partyUSDC;
         /// @notice Party providing wBTC
         address partyWBTC;
+        /// @notice Bet starting timestamp
+        uint256 startTimestamp;
     }
+
 
     /// ============ Constants ============
 

@@ -8,7 +8,7 @@ import "forge-std/Test.sol"; // Foundry: Test
 import "./utils/PriceFeedMock.sol"; // Mock PriceFeed
 import "../src/ChainSettle.sol"; // ChainSettle
 import "./utils/ChainSettleUser.sol"; // Mock user
-import "@openzeppelin/contracts/mocks/token/ERC20Mock.sol"; // Mock ERC20 token;
+import "solmate/test/utils/mocks/MockERC20.sol"; // Mock ERC20 token
 
 /// @title ChainSettleTest
 /// @author Uttam Singh
@@ -17,9 +17,9 @@ contract ChainSettleTest is Test {
     /// @notice Cheatcodes
     Vm internal VM;
     /// @notice USDC token
-    ERC20Mock internal USDC_TOKEN;
+    MockERC20 internal USDC_TOKEN;
     /// @notice WBTC token
-    ERC20Mock internal WBTC_TOKEN;
+    MockERC20 internal WBTC_TOKEN;
     /// @notice Bet contract
     ChainSettle internal BET_CONTRACT;
 
@@ -41,8 +41,8 @@ contract ChainSettleTest is Test {
         VM = Vm(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D);
 
         // Setup tokens
-        USDC_TOKEN = new ERC20Mock("USDC", "");
-        WBTC_TOKEN = new ERC20Mock("wBTC", "");
+        USDC_TOKEN = new MockERC20("USDC", "", 6);
+        WBTC_TOKEN = new MockERC20("wBTC", "", 8);
 
         // Setup mock pricefeed
         BTCUSD_PRICEFEED = new PriceFeedMock(); // Defaults to $25,000
