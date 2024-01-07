@@ -1,66 +1,16 @@
-## Foundry
+# ChainSettle
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A simple ChainSettle DApp in which anybody can initialize a bet between two parties. Parties deposit their funds & Bet is frozen for 60 days. After 60 days, anyone can call settleBet(), using the Chainlink oracle to settle the bet.
 
-Foundry consists of:
+### Run
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Clone the repo & Install Foundry using the installation steps in the README of the linked repo.
 
-## Documentation
+``` forge update```
 
-https://book.getfoundry.sh/
+### Run tests
+``` forge test ```
 
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Using [BlackSmit](https://github.com/blacksmith-eth/blacksmith) to generate quick frontends
+<img width="1439" alt="img 2024-01-07 at 2 03 06 AM" src="https://github.com/Uttam-Singhh/ChainSettle/assets/63050765/b56e1db5-2cb7-42a1-ae13-bfca05b65bff">
+<img width="1439" alt="img 2024-01-07 at 2 02 52 AM" src="https://github.com/Uttam-Singhh/ChainSettle/assets/63050765/35b751c3-0826-441c-af72-1a103b57675a">
